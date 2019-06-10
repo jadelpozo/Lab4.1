@@ -121,9 +121,9 @@
     $(document).ready(function(){
             //showing data to edit modal      
             $('#mytable').on('click','.edit',function(){
-        var idPeli = $(this).data('idPeli');
-        var Nombre = $(this).data('Nombre');
-        var Genero = $(this).data('Genero');
+        var idPeli = $(this).attr('data-idPeli');
+        var Nombre = $(this).attr('data-Nombre');
+        var Genero = $(this).attr('data-Genero');
         $('#EditModal').modal('show');
         $('.Nombre').val(Nombre);
         $('.Genero').val(Genero);
@@ -131,7 +131,7 @@
       });
             //showing delete record modal
             $('#mytable').on('click','.delete',function(){
-        var idPeli = $(this).data('idPeli');
+        var idPeli = $(this).attr('data-idPeli');
         $('#DeleteModal').modal('show');
         $('.product_id2').val(idPeli);
       });
