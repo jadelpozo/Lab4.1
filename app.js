@@ -69,7 +69,7 @@ app.post('/update',(req, res) => {
  
 //route for delete data
 app.post('/delete',(req, res) => {
-  let sql = "DELETE FROM PeliculaDB.Peli WHERE idPeli ="+req.body.idPeli+"";
+  let sql = "DELETE FROM Peli WHERE idPeli ="+req.body.idPeli+"";
   let query = conn.query(sql, (err, results) => {
     if(err) throw err;
       res.redirect('/');
