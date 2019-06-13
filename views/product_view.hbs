@@ -6,13 +6,13 @@
 </head>
 <body>
   <div class="container">
-    <h2>Peliculas</h2>
+    <h2>Product List</h2>
         <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
     <table class="table table-striped" id="mytable">
       <thead>
         <tr>
-          <th>Pelicula ID</th>
-          <th>Nombre Pelicula</th>
+          <th>ID</th>
+          <th>Nombre</th>
           <th>Genero</th>
           <th>Accion</th>
         </tr>
@@ -20,12 +20,12 @@
       <tbody>
          {{#each results}}
         <tr>
-          <td>{{ idPeli }}</td>
-          <td>{{ Nombre }}</td>
-          <td>{{ Genero }}</td>
+          <td>{{ id }}</td>
+          <td>{{ nombre }}</td>
+          <td>{{ genero }}</td>
           <td>
-            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-idPeli="{{ idPeli }}" data-Nombre="{{ Nombre }}" data-Genero="{{ Genero }}">Edit</a>
-            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-idPeli="{{ idPeli }}">Delete</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ id }}" data-nombre="{{ Nombre }}" data-genero="{{ Genero }}">Edit</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ idPeli }}">Delete</a>
           </td>
         </tr>
         {{/each}}
@@ -39,14 +39,14 @@
          <div class="modal-dialog" role="document">
            <div class="modal-content">
              <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Agregar Pelicula</h5>
+               <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
                </button>
              </div>
              <div class="modal-body">
                <div class="form-group">
-                   <input type="text" name="Nombre" class="form-control" placeholder="Nombre Pelicula" required>
+                   <input type="text" name="Nombre" class="form-control" placeholder="Product Name" required>
                </div>
  
                <div class="form-group">
@@ -68,19 +68,18 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit Datos</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                  <input type="text" name="Nombre" class="form-control Nombre" placeholder="Nombre Pelicula" required>
-                  <!--input type="text" name="Nombre" class="form-control Nombre" placeholder="Nombre Pelicula" required-->
+                  <input type="text" name="Nombre" class="form-control nombre" placeholder="Product Name" required>
               </div>
  
               <div class="form-group">
-                  <input type="text" name="Genero" class="form-control Genero" placeholder="Genero" required>
+                  <input type="text" name="Genero" class="form-control genero" placeholder="Genero" required>
               </div>
             </div>
             <div class="modal-footer">
@@ -121,9 +120,9 @@
     $(document).ready(function(){
             //showing data to edit modal      
             $('#mytable').on('click','.edit',function(){
-        var idPeli = $(this).attr('data-idPeli');
-        var Nombre = $(this).attr('data-Nombre');
-        var Genero = $(this).attr('data-Genero');
+        var idPeli = $(this).data('idPeli');
+        var Nombre = $(this).data('Nombre');
+        var Genero = $(this).data('Genero');
         $('#EditModal').modal('show');
         $('.Nombre').val(Nombre);
         $('.Genero').val(Genero);
@@ -131,7 +130,7 @@
       });
             //showing delete record modal
             $('#mytable').on('click','.delete',function(){
-        var idPeli = $(this).attr('data-idPeli');
+        var id = $(this).data('idPeli');
         $('#DeleteModal').modal('show');
         $('.product_id2').val(idPeli);
       });
