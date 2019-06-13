@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 //use mysql database
 const mysql = require('mysql');
 const app = express();
-
 //const path = require('path');
 
 //app.set('view engine', 'ejs');
@@ -61,22 +60,21 @@ app.post('/save',(req, res) => {
  
 //route for update data
 app.post('/update',(req, res) => {
-    let sql = "UPDATE Peli SET Nombre='"+req.body.Nombre+"', Genero='"+req.body.Genero+"' WHERE idPeli="+req.body.idPeli;
-    let query = conn.query(sql, (err, results) => {
-      if(err) throw err;
+  let sql = "UPDATE Peli SET Nombre='"+req.body.Nombre+"', Genero='"+req.body.Genero+"' WHERE idPeli="+req.body.idPeli;
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
+    res.redirect('/');
+  });
+});
+ 
+//route for delete data
+app.post('/delete',(req, res) => {
+  let sql = "DELETE FROM peliculadb.pelicula WHERE idPeli ="+req.body.idPeli+"";
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
       res.redirect('/');
-    });
   });
-
-   
-  //route for delete data
-  app.post('/delete',(req, res) => {
-    let sql = "DELETE FROM PeliculaDB.Peli WHERE idPeli ="+req.body.idPeli+"";
-    let query = conn.query(sql, (err, results) => {
-      if(err) throw err;
-        res.redirect('/');
-    });
-  });
+});
  
 //server listening
 app.listen(3000, () => {
