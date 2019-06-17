@@ -17,9 +17,9 @@ const app = express();
 //app.use(morgan('dev'));
 
 const conn = mysql.createConnection({
-    host: 'lab4.cpqom2m5tam2.us-east-1.rds.amazonaws.com',
-    user: 'virt',
-    password: 'virtualizacion26',
+    host: '10.5.0.5',
+    user: 'Admin',
+    password: '123',
     database: 'PeliculaDB'
   });
 //connect to database
